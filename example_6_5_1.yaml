@@ -1,0 +1,35 @@
+# example_6_5_1.yaml
+input_number:
+  turnon_duration:
+    name: 亮灯时长
+    initial: 0
+    min: 0
+    max: 8
+    step: 1
+
+automation:
+  - alias: turn on light n seconds
+    trigger:
+      - platform: state
+        entity_id: input_number.turnon_duration
+    condition:
+      condition: numeric_state
+      entity_id: input_number.turnon_duration
+      above: 0
+    action:
+      - service: light.turn_on
+        entity_id: light.gateway_light_7c49eb18e3a7
+      - delay:
+          seconds: "{{ states('input_number.turnon_duration')|int }}"
+      - service: light.turn_off
+        entity_id: light.gateway_light_7c49eb18e3a7
+      - service: input_number.set_value
+        data:
+          entity_id: input_number.turnon_duration
+          value: 0
+
+group:
+  example1_view:
+    name: 样例一
+    entities: light.gateway_light_7c49eb18e3a7, automation.turn_on_light_n_seconds, input_number.turnon_duration
+    view: yes
