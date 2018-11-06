@@ -1,0 +1,26 @@
+# example_7_2_1.yaml
+sensor:
+  - platform: darksky
+    api_key: d9f896cba3d240816d83bd1dbcb388a0
+    forecast: 1
+    language: zh
+    monitored_conditions:
+      - summary
+      - temperature
+      - humidity
+      - precip_probability
+
+weather:
+  - platform: darksky
+    api_key: d9f896cba3d240816d83bd1dbcb388a0
+    mode: hourly
+
+group:
+  weather_sensor_darksky:
+    name: DarkSky天气传感器
+    entities: sensor.dark_sky_summary, sensor.dark_sky_temperature, sensor.dark_sky_humidity, sensor.dark_sky_precip_probability
+
+  darksky:
+    name: DarkSky
+    entities: group.weather_sensor_darksky, weather.dark_sky
+    view: yes

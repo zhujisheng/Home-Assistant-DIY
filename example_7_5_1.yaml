@@ -1,0 +1,17 @@
+# example_7_5_1.yaml
+folder_watcher:
+  - folder: /home/pi
+    patterns:
+      - '*.yaml'
+      - '*.txt'
+
+automation:
+  alias: Files WatchDog
+  trigger:
+    platform: event
+    event_type: folder_watcher
+  action:
+    service: notify.zhujisheng_gmail
+    data_template:
+      title: 文件系统被修改！
+      message: "{{ trigger.event.data.file }} in {{ trigger.event.data.folder }} has been {{ trigger.event.data.event_type }}"
