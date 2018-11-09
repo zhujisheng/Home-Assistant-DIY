@@ -1,0 +1,26 @@
+# example_8_6_1.yaml
+
+# 一个显示本地图片camera设备
+camera:
+  - platform: local_file
+    name: cam8
+    file_path: /home/pi/Pictures/shjt.png
+
+# 更新本地图片的命令
+shell_command:
+  update_shjt: wget http://www.jtcx.sh.cn/jtcximg/cityhot/gj_home.png -O /home/pi/Pictures/shjt.png
+
+# 每10分钟更新一张本地图片
+automation:
+  - alias: sh_triffic_condition_update
+    trigger:
+      - platform: time
+        minutes: '/10'
+    action:
+      - service: shell_command.update_shjt
+      - delay:
+          seconds: 5
+      - service: camera.local_file_update_file_path
+        data:
+          entity_id: camera.cam8
+          file_path: /home/pi/Pictures/shjt.png
