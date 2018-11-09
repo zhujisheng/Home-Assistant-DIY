@@ -16,6 +16,7 @@ automation:
     trigger:
       - platform: time
         minutes: '/10'
+        seconds: 00
     action:
       - service: shell_command.update_shjt
       - delay:
