@@ -1,0 +1,35 @@
+﻿# example_9_5_1.yaml
+microsoft_face:
+  api_key: xxxxxxxxxxxxxxxxxx
+  azure_region: westcentralus
+
+image_processing:
+  - platform: microsoft_face_identify
+    scan_interval: 1000000
+    group: presidents
+    confidence: 10
+    source:
+      - entity_id: camera.cam_input
+        name: ms_face_identify
+
+script:
+  ms_face_identify_script:
+    alias: 微软人脸识别
+    sequence:
+      - service: image_processing.scan
+        data:
+          entity_id: image_processing.ms_face_identify
+
+automation:
+  - alias: Clinton Identify
+    trigger:
+      platform: event
+      event_type: image_processing.detect_face
+      event_data:
+        entity_id: image_processing.ms_face_identify
+        name: 'Clinton'
+    action:
+      service: persistent_notification.create
+      data_template:
+        title: '人脸认证'
+        message: '摄像头前有克林顿，可信度{{ trigger.event.data.confidence }}%'
