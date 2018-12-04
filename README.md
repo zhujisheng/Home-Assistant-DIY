@@ -68,9 +68,14 @@
 	- 云端的自动化——IFTTT(2)
 	- 系统性能监控——SystemMonitor
 	- 以不同的音色播报文字——百度tts
+- 使用苹果设备语音控制篇
+	- 通过Homekit与苹果Siri连接(1)
+	- 通过Homekit与苹果Siri连接(2)
+	- 捷径与HA的接口调用
+	- 在HA中完成语音文字处理——chrome语音控制
+	- 苹果设备语音控制全自由定制
 
 ## 未完成内容
-- 语音控制篇
 - 数据记录与分析篇
 - AppDaemon与DashBoard
 - 智能图像识别篇

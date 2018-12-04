@@ -1,0 +1,44 @@
+# example_11_4_1.yaml
+conversation:
+  intents:
+    GetTemperature:
+      - "[现在][当前]室内温度[是]多少"
+    OpenLight:
+      - "打开{item}[的]灯"
+      - "把{item}[的]灯打开"
+    CloseLight:
+      - "关上{item}[的]灯"
+      - "关闭{item}[的]灯"
+
+intent_script:
+  GetTemperature:
+    speech:
+      text: 当前室内温度{{ states.sensor.temperature_158d0001d6daa6.state }}摄氏度
+
+  OpenLight:
+    async_action: true
+    speech:
+      text: 正在打开{{ item }}灯
+    action:
+      service: homeassistant.turn_on
+      data_template: 
+        entity_id: >
+          {% if item=="书房" %}
+            light.reading_room
+          {% else %}
+            light.none
+          {% endif %}
+
+  CloseLight:
+    async_action: true
+    speech:
+      text: 正在关闭{{ item }}灯
+    action:
+      service: homeassistant.turn_off
+      data_template: 
+        entity_id: >
+          {% if item=="书房" %}
+            light.reading_room
+          {% else %}
+            light.none
+          {% endif %}
