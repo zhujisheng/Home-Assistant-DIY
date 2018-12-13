@@ -77,9 +77,14 @@
 - 数据记录篇
 	- 历史数据基础概念
 	- 数据组件的配置、mysql数据库及其它
+- AppDaemon与DashBoard
+	- 安装、配置与初步运行
+	- DashBoard配置(1)
+	- DashBoard配置(2)
+	- 制作App——一个最简单的样例
+	- 制作App——应用callback
 
 ## 未完成内容
-- AppDaemon与DashBoard
 - 智能图像识别篇
 - 组件开发篇
 - MQTT篇

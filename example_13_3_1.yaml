@@ -1,0 +1,33 @@
+﻿sensor:
+  - platform: darksky
+    api_key: d9f896cba3d240816d83bd1dbcb388a0
+    forecast: 1
+    language: zh
+    monitored_conditions:
+      - temperature
+      - apparent_temperature
+      - temperature_high
+      - temperature_low
+      - humidity
+      - precip_probability
+      - precip_intensity
+      - precip_type
+      - wind_speed
+      - wind_bearing
+      - pressure
+      - icon
+      - hourly_summary
+
+group:
+  current_weather:
+    name: 当前天气
+    entities: sensor.dark_sky_temperature, sensor.dark_sky_apparent_temperature, sensor.dark_sky_overnight_low_temperature, sensor.dark_sky_daytime_high_temperature, sensor.dark_sky_humidity, sensor.dark_sky_precip, sensor.dark_sky_precip_probability, sensor.dark_sky_precip_intensity, sensor.dark_sky_wind_speed, sensor.dark_sky_wind_bearing, sensor.dark_sky_pressure, sensor.dark_sky_icon
+
+  tomorrow_weather:
+    name: 明日天气
+    entities: sensor.dark_sky_overnight_low_temperature_1, sensor.dark_sky_daytime_high_temperature_1, sensor.dark_sky_humidity_1, sensor.dark_sky_precip_1, sensor.dark_sky_precip_probability_1, sensor.dark_sky_precip_intensity_1, sensor.dark_sky_wind_speed_1, sensor.dark_sky_wind_bearing_1, sensor.dark_sky_pressure_1, sensor.dark_sky_icon_1
+
+  weather:
+    name: 天气
+    entities: sensor.dark_sky_hourly_summary, group.current_weather, group.tomorrow_weather
+    view: yes

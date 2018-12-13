@@ -1,0 +1,26 @@
+board1:
+  widget_type: navigate
+  dashboard: myfirst
+  title: 测试
+  title_style: "color: #00aaff"
+
+board2:
+  widget_type: navigate
+  dashboard: example_13_2_1
+  title: 展示
+  title_style: "color: #00aaff"
+
+board3:
+  widget_type: navigate
+  dashboard: example_13_3_1
+  title: 气象
+  title_style: "color: #00aaff"
+
+board4:
+  widget_type: navigate
+  dashboard: example_13_3_2
+  title: 控制
+  title_style: "color: #00aaff"
+
+layout:
+  - board1, board2, board3, board4
