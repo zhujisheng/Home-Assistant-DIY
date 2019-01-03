@@ -88,12 +88,19 @@
 	- Node-RED配置
 	- HomeAssistant节点(1)
 	- HomeAssistant节点(2)
+	- 一些样例：闹钟、自动湿度控制、门铃
+- 树莓派GPIO口设备连接篇
+	- 直连树莓派的LED(1)——NodeRED接入/HA中rpi_gpio_pwm组件
+	- 直连树莓派的LED(2)——HA 中的shell_command/binary_sensor.command_line/light.template
+	- 直连树莓派的温湿度传感器
+- MQTT篇
+	- 服务器安装与最简单的智能灯
+	- 主题格式、状态反馈、调试……
+	- QoS、retain、last_will、自动配置……
 
 ## 未完成内容
-- 智能图像识别篇
+- DIY智能硬件ESP8266篇
 - 组件开发篇
-- MQTT篇
-- DIY智能设备硬件篇
 - FloorPlan界面制作篇
 
 ## 视频追求效果
