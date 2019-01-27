@@ -1,4 +1,4 @@
-# example_6_6_1.yaml
+﻿# example_6_6_1.yaml
 # 是否打开闹钟
 input_boolean:
   alarm_clock:
@@ -46,7 +46,7 @@ automation:
 - alias: Alarm Clock
   initial_state: True
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/1'
       seconds: 0
   # 判断闹钟是否打开，判断当前时间是否与闹钟时间相同
