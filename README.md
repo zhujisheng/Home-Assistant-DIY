@@ -115,9 +115,15 @@
 	- IOS App——连接、定位与通知消息
 	- iBeacon定位
 	- 多媒体通知与静态文件Web服务
+- Lovelace定制界面
+	- 理解Lovelace页面的结构
+	- Lovelace中的卡片
+- 抓取Internet信息作为传感器
+	- 即时股票行情——使用sensor.rest
+	- 各种网站页面元素——sensor.scrape组件
 
 ## 未完成内容
-- Lovelace
+- 自己动手做一个智能音箱
 
 ## 视频追求效果
 1. 真实<br>
