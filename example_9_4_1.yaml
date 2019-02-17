@@ -39,6 +39,7 @@ automation:
         entity_id: image_processing.ms_face_feature
     action:
       service: tts.google_say
+      entity_id: "all"
       data_template:
         message: >
           {% if trigger.event.data.glasses=="ReadingGlasses" %}

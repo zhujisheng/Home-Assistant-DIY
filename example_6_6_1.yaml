@@ -59,6 +59,7 @@ automation:
   action:
     # 播放文字语音
     - service: tts.google_say
+      entity_id: media_player.vlc
       data_template:
         message: '{{states.input_text.alarm_text.state}}'
     # 打开灯
