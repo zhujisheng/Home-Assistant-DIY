@@ -53,17 +53,6 @@ class my_switch(SwitchDevice):
         self._is_on = False
         self._name = 'my_relay_' + str(bytes([address,coil]))
 
-    def _control(self, turn_on, transition=0):
-        if turn_on:
-            turn_on_id = b'\x01'
-        else:
-            turn_on_id = b'\x00'
-        transition_id = bytes([transition])
-
-        command = b'\xaa\x55\x06\xb3'
-        command += (self._zone_id + self._device_id + self._channel_id + turn_on_id + transition_id)
-        self._bus.write(command)
-
     @property
     def is_on(self):
         """Return true if device is on."""
