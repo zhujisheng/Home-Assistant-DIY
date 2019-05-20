@@ -1,0 +1,8 @@
+{
+  "domain": "bus485_example",
+  "name": "bus485_example",
+  "documentation": "",
+  "requirements": ["pyserial>=3.4","crcmod>=1.7"],
+  "dependencies": [],
+  "codeowners": []
+}
