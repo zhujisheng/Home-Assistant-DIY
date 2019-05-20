@@ -1,3 +1,5 @@
+"""本程序仅供参考"""
+
 import logging
 import threading
 import time
