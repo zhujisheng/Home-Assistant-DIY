@@ -53,7 +53,7 @@ class my_switch(SwitchDevice):
         self._address = address
         self._coil = coil
         self._is_on = False
-        self._name = 'my_relay_' + str(bytes([address,coil]))
+        self._name = 'my_relay_' + str(address) + '_' + str(coil)
 
     @property
     def is_on(self):
