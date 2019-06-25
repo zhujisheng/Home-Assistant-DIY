@@ -142,6 +142,16 @@
 	- 接入自定义ascii码指令集的设备
 	- 接入modbus设备
 	- 自定义二进制命令设备的接入
+26. KNX
+	- 家庭总线部署方案与KNX
+	- 使用IPRouter接入HomeAssistant
+	- 使用ncn5120模块-USB连接模式
+	- 使用ncn5120模块-WIFI连接模式
+27. 室外物联网
+	- 全球卫星定位
+	- NB-IOT
+	- 制作室外定位设备
+	- Traccar
 - 补充篇章
 	- Linux下的常用命令
 	- Linux下的文本编辑
@@ -152,18 +162,27 @@
 	- 使用NFC识别不同的ID卡
 - 学员成果秀
 	- 语音播报床头灯(by Espoir)
+	- 感应伴随灯带(by ZackXu)
+	- 屏幕感应背光灯带(by ZackXu)
+	- HA实时直播画面(by Bobo)
 - 精彩众创教程
 	- 魔镜系列——魔镜安装(by JonnyWong)
 	- 魔镜系列：天气组件openweather(by JonnyWong)
 	- 魔镜系列：第三方组件WeeklySchedule(by JonnyWong)
+	- 魔镜系列：获取HomeAssistant中实体状态(by JonnyWong)
+	- 魔镜系列：联动智能音箱(by JonnyWong)
 	- 在群晖中安装ESPHome(by Bobo)
 	- ESPHome-SonoffBasic完整接入过程(by Bobo)
 	- ESPHome-接入SonoffRF(by Bobo)
 	- ESPHome-接入SonoffPow(by Bobo)
 	- ESPHome-接入Sonoff4CH4路继电器(by Bobo)
 	- ESPHome-H801玩转RGB+冷暖光(by Bobo)
+	- Esphome-空气质量传感器(by Bobo)
+	- EspHome-DIY小屏幕(by Bobo)
 	- 设计与制作PCB板(by Zack-Xu)
-	- x86下ubuntu虚机及HomeAssistant安装（By 猛将兄）
+	- 树莓派安装HASS.IO(by Zack-Xu)
+	- HASSIO.IO与常规运行环境区别(by Zack-Xu)
+	- x86下ubuntu虚机及HomeAssistant安装（by 猛将兄）
 
 ## 我们的追求
 1. 真实<br>
