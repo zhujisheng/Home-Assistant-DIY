@@ -15,35 +15,6 @@ bool  SIM7000::begin(Stream &port)
   return false;
 }
 
-bool  SIM7000::checkSIMStatus(void)
-{
-    int count = 0;
-    while(count < 3){
-        if(check_send_cmd("AT\r\n","OK")){
-            break;
-        }else{
-            count++;
-            delay(300);
-        }
-    }
-    if(count == 3){
-        return false;
-    }
-    count = 0;
-    while(count < 3){
-        if(check_send_cmd("AT+CPIN?\r\n","READY")){
-            break;
-        }else{
-            count++;
-            delay(300);
-        }
-    }
-    if(count == 3){
-        return false;
-    }
-    return true;
-}
-
 bool  SIM7000::check_send_cmd(const char* cmd, const char* resp, unsigned int timeout, unsigned int chartimeout)
 {
     char SIMbuffer[100];
