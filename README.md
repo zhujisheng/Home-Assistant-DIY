@@ -113,6 +113,7 @@
 20. Lovelace定制界面
 	- 理解Lovelace页面的结构
 	- Lovelace中的卡片
+	- 使用自定义lovelace卡片
 21. 抓取Internet信息作为传感器
 	- 即时股票行情——使用sensor.rest
 	- 各种网站页面元素——sensor.scrape组件
@@ -150,8 +151,8 @@
 27. 室外物联网
 	- 全球卫星定位
 	- NB-IOT
-	- 制作室外定位设备
-	- Traccar
+	- 车载定位(1)—traccar安装与配置
+	- 车载定位(2)—车载设备diy
 - 补充篇章
 	- Linux下的常用命令
 	- Linux下的文本编辑
@@ -160,6 +161,9 @@
 - 加餐
 	- 使用TensorFlow进行物体识别
 	- 使用NFC识别不同的ID卡
+	- ESPHome中的自动化
+	- 制作树莓派镜像文件(1)
+	- 制作树莓派镜像文件(2)
 - 学员成果秀
 	- 语音播报床头灯(by Espoir)
 	- 感应伴随灯带(by ZackXu)
