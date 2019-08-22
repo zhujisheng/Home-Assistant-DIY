@@ -7,6 +7,7 @@
 	- 系统环境设置——树莓派基础配置
 	- 安装Samba和JupyterNotebook
 	- 基于树莓派安装HomeAssistant
+	- HomeAssistant配置、文件结构、升级
 	- HomeAssistant自启动如何配置
 2. 组件接入基础篇
 	- 让设备发声——朗读文字
@@ -159,6 +160,13 @@
 	- HomeAssistant的docker安装
 	- HomeAssistant docker容器的典型使用
 	- HomeAssistant docker容器的非典型使用
+28. DIY红外与433转发设备
+	- 使用红外与无线模块(1)——红外接收
+	- 使用红外与无线模块(2)——红外发射
+	- 使用红外与无线模块(3)——无线收发
+	- 硬件制作(1)——画电路图
+	- 硬件制作(2)——画PCB板
+	- 硬件制作(3)——元器件与焊接
 - 补充篇章
 	- Linux下的常用命令
 	- Linux下的文本编辑
