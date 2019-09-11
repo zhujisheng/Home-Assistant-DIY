@@ -58,7 +58,7 @@ automation:
       value_template: '{{((as_timestamp(now())|int)|timestamp_custom("%H:%M"))==states.input_datetime.alarm_time.state|truncate(5,False,"",0) }}'
   action:
     # 播放文字语音
-    - service: tts.google_say
+    - service: tts.google_translate_say
       entity_id: media_player.vlc
       data_template:
         message: '{{states.input_text.alarm_text.state}}'

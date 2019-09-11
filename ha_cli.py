@@ -34,7 +34,7 @@ class ha_cli(object):
         return
 
 
-    def speak(self, sentence, tts='google_say', media_player='all'):
+    def speak(self, sentence, tts='google_translate_say', media_player='all'):
         data = { 'message': sentence,
                  'entity_id': media_player
                  }
