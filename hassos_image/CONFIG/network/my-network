@@ -1,0 +1,22 @@
+[connection]
+id=my-network
+uuid=7b91b4ea-528e-4c87-a3fe-5cd21f22b03a
+type=802-11-wireless
+
+[802-11-wireless]
+mode=infrastructure
+ssid=my_ssid
+# Uncomment below if your SSID is not broadcasted
+#hidden=true
+
+[802-11-wireless-security]
+auth-alg=open
+key-mgmt=wpa-psk
+psk=my_password
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
