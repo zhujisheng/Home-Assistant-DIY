@@ -1,4 +1,11 @@
+
+镜像下载地址：
+https://pan.baidu.com/s/1INCX_0wkHnGdzJIBJyRuHQ （提取码1024）
+
+注：本镜像文件仅针对`树莓派4`硬件系统，不适用于`树莓派3`与其它硬件平台。
+
 本镜像文件为树莓派的tf卡镜像，内容是`hassio`系统（基于`hassos`），其中已经安装好了HomeAssistant以及一些常用的Add-on。
+
 
 ## 烧写
 
@@ -26,9 +33,9 @@
 
   ```
   scan on
-  pair <your mac address>
-  trust <your mac address>
-  connect <your mac address>
+  pair 蓝牙音箱的mac地址
+  trust 蓝牙音箱的mac地址
+  connect 蓝牙音箱的mac地址
   discoverable on
   pairable on
   default-agent 
@@ -42,7 +49,7 @@
 media_player:
   - platform: pulseaudio
     name: xxxxxx
-    sink: alsa_output.0.iec958-stereo
+    sink: bluez_sink.2C_41_A1_24_BC_4C.a2dp_sink
 ```
 
 其中，sink可以通过命令`docker exec homeassistant pactl list sinks short`查看
