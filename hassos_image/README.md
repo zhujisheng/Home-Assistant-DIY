@@ -2,7 +2,7 @@
 镜像下载地址：
 https://pan.baidu.com/s/1INCX_0wkHnGdzJIBJyRuHQ （提取码1024）
 
-注：本镜像文件仅针对`树莓派4`硬件系统，不适用于`树莓派3`与其它硬件平台。
+注：请根据你的硬件平台，下载对应的`树莓派4`（文件名中包含`raspberrypi4`）或`树莓派3`（文件名中包含`raspberrypi3`）的镜像。
 
 本镜像文件为树莓派的tf卡镜像，内容是`hassio`系统（基于`hassos`），其中已经安装好了HomeAssistant以及一些常用的Add-on。
 
@@ -53,3 +53,15 @@ media_player:
 ```
 
 其中，sink可以通过命令`docker exec homeassistant pactl list sinks short`查看
+
+## 解决升级HomeAssistant后google_translate tts不可用的问题
+
+- ssh登录到系统，运行以下命令
+
+```sh
+docker exec -it homeassistant sh -c "sed -i s/translate.google.com/translate.google.cn/g \`grep translate.google.com -rl --include=*.py /usr/src/homeassistant /usr/local/lib/python3.?/site-packages/gtts_token\`"
+
+docker exec -it homeassistant sh -c "mkdir -p /config/custom_components/google_translate"
+
+docker exec -it homeassistant sh -c "cp -r /usr/src/homeassistant/homeassistant/components/google_translate/* /config/custom_components/google_translate"
+```
