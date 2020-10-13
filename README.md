@@ -2,6 +2,9 @@
 [网易云课堂地址](https://study.163.com/course/introduction.htm?courseId=1006189053&share=2&shareId=400000000624093)
 
 ## 视频目录
+
+注：最新视频内容，请直接观看网络云课堂中的目录。
+
 1. 入门准备篇
 	- 硬件环境准备——安装树莓派
 	- 系统环境设置——树莓派基础配置
@@ -9,6 +12,7 @@
 	- 基于树莓派安装HomeAssistant
 	- HomeAssistant配置、文件结构、升级
 	- HomeAssistant自启动如何配置
+    - HomeAssistant快速使用（hassio镜像）
 2. 组件接入基础篇
 	- 让设备发声——朗读文字
 	- 让设备看到——使用手机摄像头做监控
@@ -23,7 +27,9 @@
 	- 手机访问HA
 	- StatesUI界面优化——分组与分页
 4. 公网访问篇
-	- 申请Amazon免费云主机
+	- 使用 HASSIO 插件配置域名与证书(1)
+    - 使用 HASSIO 插件配置域名与证书(2)
+    - 申请Amazon免费云主机
 	- ssh隧道构建
 	- frp隧道构建
 	- 免费为HA配上域名与HTTPS网站证书
