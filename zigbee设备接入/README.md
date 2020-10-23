@@ -9,7 +9,7 @@
 
 ## 架构
 
-![zigbee2mqtt](zigbee2mqtt.jpg)
+![zigbee2mqtt](zigbee2mqtt.JPG)
 
 - zigbee2mqtt官网：https://www.zigbee2mqtt.io/
 
