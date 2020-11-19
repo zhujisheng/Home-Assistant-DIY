@@ -53,15 +53,3 @@ media_player:
 ```
 
 其中，sink可以通过命令`docker exec homeassistant pactl list sinks short`查看
-
-## 解决升级HomeAssistant后google_translate tts不可用的问题
-
-- ssh登录到系统，运行以下命令
-
-```sh
-docker exec -it homeassistant sh -c "sed -i s/translate.google.com/translate.google.cn/g \`grep translate.google.com -rl --include=*.py /usr/src/homeassistant /usr/local/lib/python3.?/site-packages/gtts_token\`"
-
-docker exec -it homeassistant sh -c "mkdir -p /config/custom_components/google_translate"
-
-docker exec -it homeassistant sh -c "cp -r /usr/src/homeassistant/homeassistant/components/google_translate/* /config/custom_components/google_translate"
-```

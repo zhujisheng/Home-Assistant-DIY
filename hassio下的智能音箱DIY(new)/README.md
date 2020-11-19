@@ -166,41 +166,32 @@
 
 #### 初始训练
 
+- 进入运行环境
+
+  `cd mycroft-precise`
+
+  `source .venv/bin/activate`
+
+- 录音
+
+  `precise-collect`
+
 - 构建音频文件存放目录
 
   ```
-  cd mycroft-precise
-  mkdir xxxx/wake-word
-  mkdir xxxx/not-wake-word
+  mkdir -p xxxx/wake-word
+  mkdir -p xxxx/not-wake-word
   mkdir -p xxxx/test/wake-word
   mkdir -p xxxx/test/not-wake-word
   ```
 
-- 进入运行环境
-
-  `source .venv/bin/activate`
-
-- 录音(训练集)
-
-  ```
-  cd xxxx/wake-word
-  precise-collect
-  cd ../..
-  ```
-
-- 录音(测试集)
-
-  ```
-  cd xxxx/test/wake-word
-  precise-collect
-  cd ../../..
-  ```
+  将录音获得的文件，放置在对应的目录中。
 
 - 初始训练
 
   `precise-train -e 60 xxxx.net xxxx/`
 
-  注：如果碰到hdf5库报错`TypeError: a bytes-like object is required, not 'str'`，可以安装低版本hdf5（pip install h5py==2.10.0）
+  注：如果碰到hdf5库报错`TypeError: a bytes-like object is required, not 'str'`，可以安装低版本hdf5（`pip install h5py==2.10.0`）
 
 #### 测试
 
@@ -247,6 +238,12 @@
 
   `precise-train-incremental xxxx.net xxxx/ -r data/random/`
 
+#### 一般训练原则
+
+- 正确发音不能被匹配时，就增加正确样本的量，放置在wake-word目录中；
+- 当错误发音被匹配时，就将错误发音添加到not-wake-word目录中
+- 如果训练过程中，准确率陷入某个较低的瓶颈值，就将所有生成的模型文件删除（不删除声音样本），然后重新训练
+
 #### 模型转换
 
 `precise-convert xxxx.net`
@@ -258,11 +255,92 @@
 
   `wake_word_model: /share/voice_assistant/xxxx.pb`
 
-## （5）自定义智能处理过程(2)-模糊匹配
+## （5）自定义智能处理过程(2)-字符串匹配、机器人API
+
+![process](images/process.JPG)
+
+#### `on_command_stage2`函数
+
+参数：
+
+`speech_in`: 语音命令字符串
+
+`va_config`: voice_assistant配置内容
+
+
+```python
+'''
+缺省配置中，on_command_stage2指向的process_none.py文件中的的on_react函数
+'''
+def on_react( speech_in, va_config ):
+  """获得语音命令文本后的处理函数"""
+  speech_out = f"你对我说，{speech_in}。但是我还没有想好怎么处理它。"
+  ha_api.play_tts( speech_out, va_config["tts_service"], va_config["media_player"] )
+```
+
+#### 字符串匹配
+
+- 字符串严格匹配
+
+```python
+if speech_in in ["命令A1","命令A2","命令A3","命令A4",...]:
+    执行动作A
+elif speech_in in ["命令B1","命令B2","命令B3","命令B4",...]:
+    执行动作B
+elif speech_in in ["命令C1","命令C2","命令C3","命令C4",...]:
+    执行动作C
+else:
+    执行动作Z
+```
+
+- 正则表达式
+
+  https://github.com/zhujisheng/learn_python/blob/master/02.%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/4.%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md
+
+- 模糊匹配
+
+  [process_stringmatch.py](https://github.com/zhujisheng/hassio-addons/blob/master/voice_assistant/process_programs/process_stringmatch.py)
+
+#### 图灵机器人
+
+[图灵机器人](http://www.turingapi.com/)
+
+[process_tuling123.py](https://github.com/zhujisheng/hassio-addons/blob/master/voice_assistant/process_programs/process_tuling123.py)
 
 ## （6）多麦克风和多唤醒词
 
-## （7）自定义智能处理过程(3)-HomeAssistant中的事件与自动化
+#### 配置结构
+
+```yaml
+voice_assistant:
+  - 智能助理1配置内容
+  - 智能助理2配置内容
+  - 智能助理3配置内容
+  - ……
+```
+
+智能助理配置内容
+```yaml
+microphone: 麦克风
+wake_word_model: 唤醒词模型文件
+threshold: 唤醒阈值
+show_match_level_realtime: 是否显示当前环境音与唤醒词模型的匹配度
+on_wake: 唤醒后处理函数
+on_command_stage1: 语音命令输入后处理函数
+on_command_stage2: 语音识别完成后处理函数
+media_player: 本语音助理使用的媒体播放器（HomeAssistant中的实体名）
+tts_service: 本语音助理使用的tts服务（HomeAssistant中的服务名）
+```
+
+*可以简单认为，每个语音助理对应于一个进程，每个语音助理独立运行*
+
+#### 实例操作
+
+![多语音助理](images/multi_process.JPG)
+
+
+## （7）自定义智能处理过程(3)-与HomeAssistant互动
 
 ## （8）自定义智能处理过程(4)-HomeAssistant中的intent
 
+## 深入voice_assistant的程序
