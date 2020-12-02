@@ -4,7 +4,7 @@ import logging
 import threading
 import time
 
-from homeassistant.components.switch import SwitchDevice
+from homeassistant.components.switch import SwitchEntity
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -43,7 +43,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     return True
 
 
-class my_switch(SwitchDevice):
+class my_switch(SwitchEntity):
     """"""
 
     def __init__(self, socket, address, coil):
