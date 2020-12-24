@@ -1,6 +1,8 @@
 ### 本项目对应于《HomeAssistant智能家居实战篇》系列视频内容中的文档。
 [网易云课堂地址](https://study.163.com/course/introduction.htm?courseId=1006189053&share=2&shareId=400000000624093)
 
+**随着HomeAssistant的发展，本课程的内容与次序将有比较大的调整。新的课程参考文档将全部制作为markdown文档，原有的会逐步调整**
+
 ## 视频目录
 
 注：最新视频内容，请直接观看网易云课堂中的目录。
