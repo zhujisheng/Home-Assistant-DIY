@@ -1,0 +1,15 @@
+{
+  "domain": "hachina_example1",
+  "name": "HAChina Example for Integration Basic",
+  "version": "1.0.0",
+  "config_flow": true,
+  "documentation": "https://study.163.com/course/courseMain.htm?courseId=1006189053&share=2&shareId=400000000624093",
+  "requirements": [],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@zhujisheng"
+  ]
+}

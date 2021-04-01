@@ -1,0 +1,14 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HAChina视频课程集成样例·1",
+        "description": "启动集成hachina_example1",
+        "data": {
+          "name": "输入名字",
+          "value": "输入值"
+        }
+      }
+    }
+  }
+}

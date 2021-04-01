@@ -1,0 +1,14 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HAChina Integration for education No.1",
+        "description": "Set up the integration hachina_example1",
+        "data": {
+          "name": "input name",
+          "value": "input value"
+        }
+      }
+    }
+  }
+}
