@@ -1,4 +1,4 @@
-"""Constants for the Pulse Audio integration."""
+"""Constants for hachina_example1 integration."""
 
 DOMAIN = "hachina_example1"
 

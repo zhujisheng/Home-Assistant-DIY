@@ -15,6 +15,20 @@ from .const import DOMAIN, CONF_VALUE, DEFAULT_VALUE
 _LOGGER = logging.getLogger(__name__)
 
 
+# 对configuration.yaml文件中该集成的配置格式要求
+CONFIG_SCHEMA = vol.Schema(
+    {
+        DOMAIN: vol.Schema(
+            {
+                # “name”在配置文件中是必须存在的（Required），否则报错，它的类型是字符串
+                vol.Required(CONF_NAME): cv.string,
+                # “value”在配置文件中可以没有（Optional），如果没有缺省值为“积木构建智慧空间！”，它的类型是字符串
+                vol.Optional(CONF_VALUE, default=DEFAULT_VALUE): cv.string,
+            }),
+    },
+    extra=vol.ALLOW_EXTRA)
+
+
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the hachina_example1 component."""
 
@@ -22,19 +36,6 @@ async def async_setup(hass: HomeAssistant, config: dict):
     conf = config.get(DOMAIN)
 
     if conf:
-        # 配置格式要求
-        CONFIG_SCHEMA = vol.Schema(
-            {
-                DOMAIN: vol.Schema(
-                    {
-                        # “name”在配置文件中是必须存在的（Required），否则报错，它的类型是字符串
-                        vol.Required(CONF_NAME): cv.string,
-                        # “value”在配置文件中可以没有（Optional），如果没有缺省值为“积木构建智慧空间！”，它的类型是字符串
-                        vol.Optional(CONF_VALUE, default=DEFAULT_VALUE): cv.string,
-                    }),
-            },
-            extra=vol.ALLOW_EXTRA)
-
         # 获得具体配置项信息
         name = conf.get(CONF_NAME)
         value = conf.get(CONF_VALUE)
