@@ -1,0 +1,14 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Example Load Platform -3",
+        "description": "Example Load Platform -3",
+        "data": {
+          "name": "input name",
+          "value": "input value"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "domain": "qr",
+  "name": "qr",
+  "documentation": "",
+  "requirements": ["pyzbar", "pillow"],
+  "dependencies": [],
+  "codeowners": [],
+  "version": "0.1.0"
+}

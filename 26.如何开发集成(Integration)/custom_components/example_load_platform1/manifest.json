@@ -1,0 +1,9 @@
+{
+  "domain": "example_load_platform1",
+  "name": "Example Load Platform1",
+  "documentation": "",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": [],
+  "version": "0.1.0"
+}

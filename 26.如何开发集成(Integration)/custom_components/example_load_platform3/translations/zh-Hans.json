@@ -1,0 +1,14 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HAChina视频课程加载平台样例·3",
+        "description": "从前端配置加载平台",
+        "data": {
+          "name": "输入名字",
+          "value": "输入值"
+        }
+      }
+    }
+  }
+}

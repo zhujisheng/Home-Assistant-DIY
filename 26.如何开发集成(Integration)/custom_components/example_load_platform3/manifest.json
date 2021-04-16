@@ -1,0 +1,10 @@
+{
+  "domain": "example_load_platform3",
+  "name": "Example Load Platform3",
+  "documentation": "",
+  "dependencies": [],
+  "codeowners": [],
+  "requirements": [],
+  "version": "0.1.0",
+  "config_flow": true
+}
