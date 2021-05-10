@@ -69,21 +69,23 @@
 - VPN使用的子网为`172.27.66.0/24`
 - HomeAssistant中wireguard add-on
 
-    + 私钥：`myprivatekey-1`
-    + 对应公钥：`mypublickey-1`
+    + 私钥：`qKywOoIV0zk24kOLvc3LSYWtNsBVnGK33KwnRQph928=`
+    + 对应公钥：`w3Z4nyRk7GU4pifBlVZ0tQSG8L5HOZtR72cgqIl3fjU=`
     + IP地址：`172.27.66.1`
 
 - 云主机
 
-    + 私钥：`myprivatekey-2`
-    + 对应公钥：`mypublickey-2`
+    + 私钥：`KLgzNLn3HWU162rcWkwWuxe2bTSbMjeiF59cG+3ls0A=`
+    + 对应公钥：`0JVKWfyYylbEEwcRIVxgR1KoHEDKWHY97UQUjhRPc0E=`
     + IP地址：`172.27.66.2`
 
-- 其它安装wireguard的主机（手机）N
+- 其它安装wireguard的主机（手机）
 
-    + 私钥：`myprivatekey-N`
-    + 对应公钥：`mypublickey-N`
-    + IP地址：`172.27.66.N`
+    + 私钥：`wMwS6lwcI/YM8ctO7g/0gbsNEAr2EPifGNbfdYGrkkI=`
+    + 对应公钥：`tyoNPY0U/AvcSbJTaB4RAbyfKcXaXBTfmiNbV3NvCz8=`
+    + IP地址：`172.27.66.3`
+
+    *如果有多台主机（手机），就生成多个配置，每个配置使用不同的IP地址与公私钥对*
 
 注：你可以修改VPN使用的子网为其它的私网地址，对应修改以下配置中`172.27.66`开头的地址即可。但注意VPN使用的子网，不可与你的局域网地址相同。
 
@@ -109,25 +111,25 @@
 
     ```conf
     [Interface]
-    PrivateKey = myprivatekey-2
+    PrivateKey = KLgzNLn3HWU162rcWkwWuxe2bTSbMjeiF59cG+3ls0A=
     Address = 172.27.66.2/24
     ListenPort = 51820
     PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -I POSTROUTING -s 172.27.66.0/24 -j MASQUERADE; iptables -t nat -p udp -I PREROUTING -m multiport --dport 100:10000 -j REDIRECT --to-ports 51820
     PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -s 172.27.66.0/24 -j MASQUERADE; iptables -t nat -p udp -D PREROUTING -m multiport --dport 100:10000 -j REDIRECT --to-ports 51820
 
     [Peer]
-    PublicKey = mypublickey-1
+    PublicKey = w3Z4nyRk7GU4pifBlVZ0tQSG8L5HOZtR72cgqIl3fjU=
     AllowedIPs = 172.27.66.1/32
 
     [Peer]
-    PublicKey = mypublickey-N
-    AllowedIPs = 172.27.66.N/32
+    PublicKey = tyoNPY0U/AvcSbJTaB4RAbyfKcXaXBTfmiNbV3NvCz8=
+    AllowedIPs = 172.27.66.3/32
     ```
 
     注：
 
     - 有多少台设备直接连接云服务器科学上网，就配置多少个`[peer]`，每个`[peer]`中的配置内容对应不同的`N`
-    - 使用真实的公私钥替换以上配置中的`myprivatekey-2`、`mypublickey-1`、以及`mypublickey-N`
+    - 为了安全，请使用你自己生成的公私钥替换以上配置中的公私钥
     - wireguard中对外开放UDP端口`51820`与`100`-`10000`(`100`-`10000`由规则`iptables -t nat -p udp -I PREROUTING -m multiport --dport 100:10000 -j REDIRECT --to-ports 51820`实现)，客户端可以连接其中任意一个端口（功能相同）。
 
         之所以实现这么多端口，是因为一个端口使用时间长后，有可能被封——这时候，在客户端换个端口连接即可。
@@ -156,7 +158,7 @@
 
     ```yaml
     interface:
-      PrivateKey: myprivatekey-1
+      PrivateKey: qKywOoIV0zk24kOLvc3LSYWtNsBVnGK33KwnRQph928=
       Address: 172.27.66.1/24
       PostUp: >-
         iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT;
@@ -165,7 +167,7 @@
         iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT;
         iptables -t nat -D POSTROUTING -o %i -j MASQUERADE
     peers:
-      - PublicKey: mypublickey-2
+      - PublicKey: 0JVKWfyYylbEEwcRIVxgR1KoHEDKWHY97UQUjhRPc0E=
         EndPoint: 'x.x.x.x:51820'
         PersistentKeepalive: 25
         AllowedIPs: 0.0.0.0/0
@@ -174,7 +176,7 @@
     注：
 
     - 需要修改以上配置中云主机的IP地址，也就是配置中出现`x.x.x.x`
-    - 使用真实的公私钥替换以上配置中的`myprivatekey-1`和`mypublickey-2`
+    - 为了安全，请使用你自己生成的公私钥替换以上配置中的公私钥
 
 - 启动与使用
 
@@ -190,17 +192,17 @@
     配置如下
     ```conf
     [Interface]
-    PrivateKey = myprivatekey-N
-    Address = 172.27.66.N/24
+    PrivateKey = wMwS6lwcI/YM8ctO7g/0gbsNEAr2EPifGNbfdYGrkkI=
+    Address = 172.27.66.3/24
 
     [Peer]
-    PublicKey = mypublickey-2
+    PublicKey = 0JVKWfyYylbEEwcRIVxgR1KoHEDKWHY97UQUjhRPc0E=
     AllowedIPs = 0.0.0.0/0
     Endpoint = x.x.x.x:51820
     PersistentKeepalive = 25
     ```
 
-    注：需要修改配置中的`x.x.x.x`（云服务器IP）、`N`以及`myprivatekey-N`
+    注：需要修改配置中的`x.x.x.x`（云服务器IP）；为了安全，请自己生成公私钥密钥对
 
 - 其它
 
