@@ -114,8 +114,8 @@
     PrivateKey = KLgzNLn3HWU162rcWkwWuxe2bTSbMjeiF59cG+3ls0A=
     Address = 172.27.66.2/24
     ListenPort = 51820
-    PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -I POSTROUTING -s 172.27.66.0/24 -j MASQUERADE; iptables -t nat -p udp -I PREROUTING -m multiport --dport 100:10000 -j REDIRECT --to-ports 51820
-    PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -s 172.27.66.0/24 -j MASQUERADE; iptables -t nat -p udp -D PREROUTING -m multiport --dport 100:10000 -j REDIRECT --to-ports 51820
+    PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -I POSTROUTING -s 172.27.66.0/24 -j MASQUERADE; iptables -t nat -p udp -I PREROUTING -m multiport --dport 1025:10000 -j REDIRECT --to-ports 51820
+    PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -s 172.27.66.0/24 -j MASQUERADE; iptables -t nat -p udp -D PREROUTING -m multiport --dport 1025:10000 -j REDIRECT --to-ports 51820
 
     [Peer]
     PublicKey = w3Z4nyRk7GU4pifBlVZ0tQSG8L5HOZtR72cgqIl3fjU=
@@ -130,7 +130,7 @@
 
     - 有多少台设备直接连接云服务器科学上网，就配置多少个`[peer]`，每个`[peer]`中的配置内容对应不同的`N`
     - 为了安全，请使用你自己生成的公私钥替换以上配置中的公私钥
-    - wireguard中对外开放UDP端口`51820`与`100`-`10000`(`100`-`10000`由规则`iptables -t nat -p udp -I PREROUTING -m multiport --dport 100:10000 -j REDIRECT --to-ports 51820`实现)，客户端可以连接其中任意一个端口（功能相同）。
+    - wireguard中对外开放UDP端口`51820`与`1025`-`10000`(`1025`-`10000`由规则`iptables -t nat -p udp -I PREROUTING -m multiport --dport 1025:10000 -j REDIRECT --to-ports 51820`实现)，客户端可以连接其中任意一个端口（功能相同）。
 
         之所以实现这么多端口，是因为一个端口使用时间长后，有可能被封——这时候，在客户端换个端口连接即可。
 
