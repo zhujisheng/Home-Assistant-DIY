@@ -1,5 +1,7 @@
 # 网络访问受限解决方案
 
+*“失去的只是锁链，获得的将是整个世界！”*
+
 ## 当前表现与最终效果
 
 在中国大陆使用HomeAssistant，会存在以下一些问题：
@@ -175,8 +177,9 @@
 
     注：
 
-    - 需要修改以上配置中云主机的IP地址，也就是配置中出现`x.x.x.x`
+    - 需要修改以上配置中云主机的IP地址，也就是配置中出现的`x.x.x.x`
     - 为了安全，请使用你自己生成的公私钥替换以上配置中的公私钥
+    - 大陆对有些域名（比如raw.githubusercontent.com）存在域名污染，但在Raw Wireguard add-on中设置的DNS仅对该add-on有效。可以在ssh add-on中运行命令`ha dns options --servers dns://8.8.8.8`修改域名服务器，设置后对所有add-on（包括HomeAssistant Core）有效。
 
 - 启动与使用
 
@@ -194,6 +197,7 @@
     [Interface]
     PrivateKey = wMwS6lwcI/YM8ctO7g/0gbsNEAr2EPifGNbfdYGrkkI=
     Address = 172.27.66.3/24
+    DNS = 8.8.8.8
 
     [Peer]
     PublicKey = 0JVKWfyYylbEEwcRIVxgR1KoHEDKWHY97UQUjhRPc0E=
