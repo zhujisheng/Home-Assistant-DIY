@@ -215,3 +215,12 @@
 ## 从Internet访问HomeAssistant
 
 参见前面的课程，在云主机上安装Nginx，代理到`172.27.66.1`的`8123`端口即可。
+
+*最新版本HomeAssistant中，如果使用代理访问，需要在`configuration.yaml`中增加如下配置：*
+
+```yaml
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.27.66.0/24
+```
