@@ -41,8 +41,6 @@ Frigate一般以docker容器的方式安装运行；也可以是HomeAssistant Su
           enabled: True
         snapshots:
           enabled: True
-        clips:
-          enabled: True
         objects:
           track:
             - person
@@ -56,9 +54,10 @@ Frigate一般以docker容器的方式安装运行；也可以是HomeAssistant Su
                 - rtmp
                 - clips
                 - record
-        width: 1280
-        height: 720
-        fps: 5
+        detect:
+          width: 1280
+          height: 720
+          fps: 5
     detectors:
       cpu1:
         type: cpu
